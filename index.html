@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- custom redux core that i wrote ↓ -->
+    <script src="./redux/redux.js" type="module"></script>
+    <script src="./js/script.js" async defer type="module"></script>
+    <link rel="stylesheet" href="./dist/output.css" />
+    <title>Todo List</title>
+  </head>
+  <body class="bg-gray-900">
+    <div
+      class="w-full md:w-7/12 lg:w-5/12 min-h-11 my-20 mx-auto rounded-lg bg-transparent py-5 border border-gray-100 text-white"
+    >
+      <form class="input-form p-4">
+        <input
+          type="text"
+          placeholder="Add a New Task + Enter"
+          class="todo-value w-full text-black border border-gray-300 rounded-md p-2 focus:outline-none text-lg placeholder:text-center"
+        />
+      </form>
+      <!-- operation btns start -->
+      <div
+        class="my-7 space-x-5 flex items-center border-b border-gray-300 pb-5 px-4"
+      >
+        <button
+          class="capitalize cursor-pointer all-todos text-xs font-bold md:font-normal md:text-base"
+        >
+          <span class="todos-state text-gray-200 active">all</span>
+          <span class="text-gray-200 all-number">(0)</span>
+        </button>
+
+        <button
+          class="capitalize incomplete-todos text-xs font-bold md:font-normal md:text-base"
+        >
+          <span class="todos-state text-gray-200 cursor-pointer"> pending</span>
+          <span class="text-gray-200 incompleted-number">(0)</span>
+        </button>
+
+        <button
+          class="capitalize text-gray-200 cursor-pointer complete-todos text-xs font-bold md:font-normal md:text-base"
+        >
+          <span class="todos-state text-gray-200 cursor-pointer">
+            completed</span
+          >
+          <span class="text-gray-400 completed-number">(0)</span>
+        </button>
+
+        <button
+          class="capitalize bg-gradient-to-r from-green-400 to-blue-500 px-3 py-2 text-white font-bold rounded-md clearAll-btn text-xs md:text-base"
+          style="margin-left: auto"
+        >
+          clear all
+        </button>
+      </div>
+      <!-- operation btns end -->
+
+      <!-- todos start-->
+      <ul class="p-5 space-y-6 todo-container">
+        <!-- todo list here -->
+      </ul>
+      <!-- todos end-->
+    </div>
+  </body>
+</html>
