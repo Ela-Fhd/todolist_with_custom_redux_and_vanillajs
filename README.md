@@ -1,4 +1,4 @@
-<h1 align="center">todolist_with_custom_redux_and_vanilla-js</h1>
+<h1 align="center">todolist_with_custom_redux_and_vanilla_js</h1>
 
 ![demo](https://github.com/Ela-Fhd/todolist_with_custom_redux_and_vanillajs/blob/main/assets/demo/demo-1.png)
 ![demo](https://github.com/Ela-Fhd/todolist_with_custom_redux_and_vanillajs/blob/main/assets/demo/demo-2.png)
