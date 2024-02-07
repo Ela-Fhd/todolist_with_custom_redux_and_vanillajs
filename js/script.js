@@ -13,9 +13,11 @@ const container = document.querySelector(".todo-container");
 
 // filter btns
 const allTodos = document.querySelector(".all-todos");
-const incompleteTodos = document.querySelector(".incomplete-todos");
-const completeTodos = document.querySelector(".complete-todos");
+const incompleteTodosBtn = document.querySelector(".incomplete-todos");
+const completeTodosBtn = document.querySelector(".complete-todos");
 const todosState = document.querySelectorAll(".todos-state");
+let completedTodos = null;
+let incompletedTodos = null;
 
 // operation btns
 const clearAll = document.querySelector(".clearAll-btn");
@@ -37,9 +39,16 @@ todosState.forEach((todo) => {
 window.addEventListener("load", () => {
   store.dispatch(getAllTodo());
   const todos = store.getState();
+  generateTodos(todos);
+});
+
+store.subscribe(() => {
+  console.log();
+  // store.dispatch(getAllTodo());
+  const todos = store.getState();
   numAllTodos.innerHTML = `(${todos.length})`;
-  const completedTodos = todos.filter((todo) => todo.isCompleted);
-  const incompletedTodos = todos.filter((todo) => !todo.isCompleted);
+  completedTodos = todos.filter((todo) => todo.isCompleted);
+  incompletedTodos = todos.filter((todo) => !todo.isCompleted);
   numCompletedTodos.innerHTML = `(${completedTodos.length})`;
   numIncompletedTodos.innerHTML = `(${incompletedTodos.length})`;
   generateTodos(todos);
@@ -76,18 +85,13 @@ const handleDeleteTodo = (todoId) => {
   store.dispatch(deleteTodo(todoId));
   const todos = store.getState();
   generateTodos(todos);
-  numAllTodos.innerHTML = `(${todos.length})`;
-  const completedTodos = todos.filter((todo) => todo.isCompleted);
-  const incompletedTodos = todos.filter((todo) => !todo.isCompleted);
-  numCompletedTodos.innerHTML = `(${completedTodos.length})`;
-  numIncompletedTodos.innerHTML = `(${incompletedTodos.length})`;
 };
 
 // bind handleDeleteTodo function to window
 window.handleDeleteTodo = handleDeleteTodo;
 
 //filter incomplete Todos
-incompleteTodos.addEventListener("click", () => {
+incompleteTodosBtn.addEventListener("click", () => {
   store.dispatch(getAllTodo());
   const todos = store.getState();
   const incompleteTodos = todos.filter((todo) => !todo.isCompleted);
@@ -95,7 +99,7 @@ incompleteTodos.addEventListener("click", () => {
 });
 
 //filter complete Todos
-completeTodos.addEventListener("click", () => {
+completeTodosBtn.addEventListener("click", () => {
   store.dispatch(getAllTodo());
   const todos = store.getState();
   const completeTodos = todos.filter((todo) => todo.isCompleted);
@@ -114,10 +118,6 @@ const handleCompleteTodo = (todoId) => {
   store.dispatch(completeTodo(todoId));
   const todos = store.getState();
   generateTodos(todos);
-  const completedTodos = todos.filter((todo) => todo.isCompleted);
-  const incompletedTodos = todos.filter((todo) => !todo.isCompleted);
-  numCompletedTodos.innerHTML = `(${completedTodos.length})`;
-  numIncompletedTodos.innerHTML = `(${incompletedTodos.length})`;
 };
 
 // bind handleCompleteTodo function to window
